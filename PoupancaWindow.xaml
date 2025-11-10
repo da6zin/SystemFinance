@@ -1,0 +1,11 @@
+﻿<Window x:Class="SystemFinance.PoupancaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Poupança" Height="200" Width="400">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Função de Poupança (simulada)" FontSize="16" Margin="0,0,0,10"/>
+            <Button Content="Simular rendimento" FontSize="16" Click="Simular_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

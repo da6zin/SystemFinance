@@ -1,0 +1,12 @@
+﻿<Window x:Class="SystemFinance.DepositarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Depositar" Height="200" Width="400">
+    <Grid>
+
+        <TextBlock Text="Valor do depósito:" FontSize="16" Margin="22,32,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158"/>
+        <TextBox x:Name="txtValor" FontSize="16" Margin="0,62,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Width="356" TextChanged="txtValor_TextChanged"/>
+        <Button x:Name="Confirmar_Button" Content="Confirmar" FontSize="16" Click="BotaoConfirmarDeposito_Click" Margin="0,113,68,0" Height="37" VerticalAlignment="Top" HorizontalAlignment="Right" Width="132"/>
+        <Button x:Name="Cancelar_Button" Content="Cancelar" FontSize="16" Click="BotaoCancelar_Click" Margin="47,113,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="133"/>
+    </Grid>
+</Window>

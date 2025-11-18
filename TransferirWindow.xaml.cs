@@ -5,25 +5,53 @@ namespace SystemFinance
     public partial class TransferirWindow : Window
     {
         private double saldo;
+        public double novoSaldo { get; set; }
 
-        public TransferirWindow(double saldo)
+        public TransferirWindow(double saldoInicial)
         {
             InitializeComponent();
-            this.saldo = saldo;
+            this.saldo = saldoInicial;
+            this.novoSaldo = saldoInicial;
         }
 
-        private void Confirmar_Click(object sender, RoutedEventArgs e)
+        private void Confirmar_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(txtValor.Text, out double valor) && valor > 0 && valor <= saldo)
+            if (!string.IsNullOrWhiteSpace(Valor_TextBox.Text) &&
+                !string.IsNullOrWhiteSpace(Nome_TextBox.Text) &&
+                double.TryParse(Valor_TextBox.Text, out double valorTransferido) &&
+                valorTransferido > 0)
             {
-                saldo -= valor;
-                MessageBox.Show($"Transferência de R$ {valor:F2} realizada com sucesso!");
-                Close();
+                string nomeDestinatario = Nome_TextBox.Text;
+                if (saldo - valorTransferido >= 0)
+                {
+                    this.novoSaldo = saldo - valorTransferido;
+                    MessageBox.Show($"Transferência de R${valorTransferido} para {nomeDestinatario} realizada com sucesso.");
+                    this.DialogResult = true;
+                }
+                else
+                {
+                    MessageBox.Show("Saldo insuficiente para esta transferência.");
+                }
             }
             else
             {
-                MessageBox.Show("Valor inválido ou saldo insuficiente.");
+                MessageBox.Show("Por favor, preencha todos os campos corretamente.");
             }
+        }
+
+        private void Cancelar_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
+
+        private void Valor_TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Nome_TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }

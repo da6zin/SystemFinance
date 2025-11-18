@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace SystemFinance
 {
-    /// <summary>
-    /// Lógica interna para LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         private double saldo = 0.0;
@@ -34,53 +31,43 @@ namespace SystemFinance
 
         private void Sacar_Click(object sender, RoutedEventArgs e)
         {
-            var sacarWindow = new SacarWindow(saldo); // 'saldo' é o valor antigo
+            var sacarWindow = new SacarWindow(saldo);
 
-            // 1. ShowDialog() retorna um 'bool?' (true, false ou null)
-            //    Ele será 'true' se você definiu "DialogResult = true" lá dentro.
             bool? resultado = sacarWindow.ShowDialog();
 
-            // 2. Verifique se o usuário clicou em "Confirmar" (resultado == true)
             if (resultado == true)
             {
-                // 3. Se sim, puxe o novo valor da propriedade pública da dialog
-                this.saldo = sacarWindow.NovoSaldo; // ATUALIZA A VARIÁVEL DA MAINWINDOW
+                this.saldo = sacarWindow.NovoSaldo;
 
-                // 4. AGORA sim, chame o método para atualizar a UI com o novo valor
                 AtualizarSaldo();
             }
-            // Se o resultado for 'false' ou 'null' (usuário cancelou),
-            // o código simplesmente termina e o 'AtualizarSaldo()' não é chamado,
-            // mantendo o saldo antigo.
+
         }
 
         private void Depositar_Click(object sender, RoutedEventArgs e)
         {
-            var depositarWindow = new DepositarWindow(saldo); // 'saldo' é o valor antigo
+            var depositarWindow = new DepositarWindow(saldo);
 
-            // 1. ShowDialog() retorna um 'bool?' (true, false ou null)
-            //    Ele será 'true' se você definiu "DialogResult = true" lá dentro.
             bool? resultado = depositarWindow.ShowDialog();
 
-            // 2. Verifique se o usuário clicou em "Confirmar" (resultado == true)
             if (resultado == true)
             {
-                // 3. Se sim, puxe o novo valor da propriedade pública da dialog
-                this.saldo = depositarWindow.NovoSaldo; // ATUALIZA A VARIÁVEL DA MAINWINDOW
-
-                // 4. AGORA sim, chame o método para atualizar a UI com o novo valor
+                this.saldo = depositarWindow.NovoSaldo;
                 AtualizarSaldo();
             }
-            // Se o resultado for 'false' ou 'null' (usuário cancelou),
-            // o código simplesmente termina e o 'AtualizarSaldo()' não é chamado,
-            // mantendo o saldo antigo.
         }
 
         private void Transferir_Click(object sender, RoutedEventArgs e)
         {
             var transferirWindow = new TransferirWindow(saldo);
-            transferirWindow.ShowDialog();
-            AtualizarSaldo();
+
+            bool? resultado = transferirWindow.ShowDialog();
+
+            if (resultado == true)
+            {
+                this.saldo = transferirWindow.novoSaldo;
+                AtualizarSaldo();
+            }
         }
 
         private void Poupanca_Click(object sender, RoutedEventArgs e)

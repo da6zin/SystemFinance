@@ -4,10 +4,10 @@
         Title="Poupança" Height="200" Width="350">
 
     <Grid>
-        <Button x:Name="Simular_Button" Content="Simular" VerticalAlignment="Top" FontSize="16" Margin="138,68,138,0" Click="Simular_Button_Click"/>
+        <Button x:Name="Simular_Button" Content="Simular" VerticalAlignment="Top" FontSize="16" Margin="138,71,138,0" Click="Simular_Button_Click"/>
         <Button x:Name="Cancelar_Button" Content="Cancelar" Margin="53,123,215,0" VerticalAlignment="Top" FontSize="16" Click="Cancelar_Button_Click"/>
-        <Button x:Name="Confirmar_Button" Content="Confirmar" Margin="217,123,53,0" VerticalAlignment="Top" FontSize="16" Click="Confirmar_Button_Click"/>
-        <Label Content="Simular Rendimento" Margin="98,32,98,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="Confirmar_Button" Content="Confirmar" Margin="211,123,0,0" VerticalAlignment="Top" FontSize="16" Click="Confirmar_Button_Click" HorizontalAlignment="Left" Width="86"/>
+        <Label Content="Simular Rendimento" Margin="98,35,98,0" VerticalAlignment="Top" FontSize="16"/>
 
 
     </Grid>
